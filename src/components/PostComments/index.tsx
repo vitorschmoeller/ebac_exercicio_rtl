@@ -10,8 +10,8 @@ const Post = () => {
     function handleAddComment(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         const newComment = new Comment(comments.length, tempComment);
-        setTempComment('');
         setComments([...comments, newComment]);
+        setTempComment('');
     }
 
     return (
@@ -26,8 +26,8 @@ const Post = () => {
                 ))}
             </ul>
             <form onSubmit={handleAddComment} className={styles['post-comments-form']}>
-                <textarea value={tempComment} onChange={e => setTempComment(e.target.value)} required className={styles['post-comments-form-textarea']} />
-                <button type="submit" className={styles['post-comments-form-button']}>
+                <textarea data-testid="campo" value={tempComment} onChange={e => setTempComment(e.target.value)} required className={styles['post-comments-form-textarea']} />
+                <button data-testid="botao" type="submit" className={styles['post-comments-form-button']}>
                     Comentar
                 </button>
             </form>
